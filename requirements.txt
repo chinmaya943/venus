@@ -8,6 +8,7 @@ django-filter==22.1
 django-jazzmin==2.5.0
 djangorestframework==3.13.1
 filelock==3.7.0
+gunicorn==20.1.0
 mysqlclient==2.1.1
 Pillow==9.1.1
 platformdirs==2.5.2
@@ -19,3 +20,4 @@ sqlparse==0.4.2
 toml==0.10.2
 tzdata==2022.1
 virtualenv==20.14.1
+waitress==2.1.2
