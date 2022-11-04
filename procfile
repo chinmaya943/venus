@@ -1,1 +1,1 @@
-web gunicorn shoppinglyx.wsgi --log-file 
+web: gunicorn venus_daily_mart(2)(19.22.).wsgi --log-file 
