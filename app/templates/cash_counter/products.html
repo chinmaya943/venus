@@ -1,0 +1,73 @@
+{% extends 'cash_counter/cashier_home.html' %}
+{% load static %}
+{% block content %}  
+      <h1>Products List</h1>
+            <div>
+              <form action="{% url 'searchbar' %}" method="get">
+                <input type="text" name="search" placeholder="Search Products">
+                <button type="submit"> <i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <div class="outer-wrapper">
+              <div class="table-wrapper">
+                <div class="container">
+            
+                  <table class="table table-bordered" style="width:100%;">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">ID</th>                     
+                        <th scope="col">GROUP</th>
+                        <th scope="col">ITEM TYPE</th>
+                        <th scope="col">SUPPLIER</th>
+                        <th scope="col">MANUFACTURER</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col">BARCODE</th>
+                        <th scope="col">ITEM SIZE</th>
+                        <th scope="col">ITEM COLOR</th>
+                        <th scope="col">PUR.PRICE</th>
+                        <th scope="col">PUR.TAX</th>
+                        <th scope="col">SELL.PRICE</th>
+                        <th scope="col">SELL.TAX</th>
+                        <th scope="col">DISCOUNT PRICE</th>
+                        <th scope="col">DESCRIPTION</th>
+                        <th scope="col">BRAND</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">ACTUAL MRP</th>
+                        <th scope="col">Prod.PUR.DATE</th>
+                        <th scope="col">EXPIRY DATE</th>
+                        <th scope="col">PROD.IMG</th>
+                      </tr>
+                    </thead>
+                    {% for p in productss_list %}
+                      <tbody>
+                        <tr>
+                          <td scope="row">{{ p.id }}</td>
+                          <td scope="row">{{ p.group }}</td>
+                          <td scope="row">{{ p.item_type }}</td>
+                          <td scope="row">{{ p.supplier }}</td>
+                          <td scope="row">{{ p.manufacturer }}</td>
+                          <td scope="row">{{ p.title }}</td>
+                          <td scope="row">{{ p.barcode }}</td>
+                          <td scope="row">{{ p.item_size }}</td>
+                          <td scope="row">{{ p.item_color }}</td>
+                          <td scope="row">{{ p.purchase_price }}</td>
+                          <td scope="row">{{ p.purchase_tax }}</td>
+                          <td scope="row">{{ p.selling_price }}</td>
+                          <td scope="row">{{ p.selling_tax }}</td>
+                          <td scope="row">{{ p.discounted_price }}</td>
+                          <td scope="row">{{ p.description }}</td>
+                          <td scope="row">{{ p.brand }}</td>
+                          <td scope="row">{{ p.category }}</td>
+                          <td scope="row">{{ p.actual_mrp }}</td>
+                          <td scope="row">{{ p.product_perchase_date }}</td>
+                          <td scope="row">{{ p.expiry_date }}</td>
+                          <td scope="row"><img src="{{ p.product_image.url }}" style="height: 45px;"></td>
+                        </tr>
+                        
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+    <h1>Supplier</h1>
+    <div class="btn" style="background-color: blue;">
+        <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'supplier-insert' %}">+ Add Supplier</a>
+    </div>
+        <div class="table-wrapper">
+            <table class="table table-bordered table-striped" style="width:100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">SUPPLIER CODE</th>
+                        <th scope="col">SUPPLIER</th>
+                        <th scope="col">ADDRESS</th>
+                        <th scope="col">CONTACT NO</th>
+                        <th scope="col">SUPPLIER EMAIL</th>
+                        <th scope="col">GSTIN NO</th>
+                        <th scope="col">STATE</th>
+                        <th scope="col">PIN</th>
+                    </tr>
+                </thead>
+                {% for sup in supplier_list %}
+                <tbody>
+                    <tr>
+                        <td scope="row">{{ sup.id }}</td>
+                        <td scope="row">{{ sup.supplier_code }}</td>
+                        <td scope="row">{{ sup.supplier }}</td>
+                        <td scope="row">{{ sup.address }}</td>
+                        <td scope="row">{{ sup.contact_no }}</td>
+                        <td scope="row">{{ sup.supplier_email }}</td>
+                        <td scope="row">{{ sup.gstin_no }}</td>
+                        <td scope="row">{{ sup.state }}</td>
+                        <td scope="row">{{ sup.pin }}</td>
+                        <td>
+                            <a href="{% url 'supplier-update' sup.id %}" class="btn btn-warning">Edit</a>
+                            <form action="{% url 'supplier-delete' sup.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

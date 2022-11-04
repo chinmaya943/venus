@@ -1,0 +1,27 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="page-wrapper">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tab">
+                <div class="btn" style="background-color: blue;">
+                  <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'U-insert' %}">+ Add User</a>
+                </div>
+                <center><u><h1>USER INSERTION FORM</h1></u></center>
+                {% if submitted %}
+                  User Inserted Successfully!!!
+                {% else %}
+                  <form action="" method="post">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <input type="submit" value="Submit" class="btn btn-success">
+                {% endif %}
+                  </form>
+                </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

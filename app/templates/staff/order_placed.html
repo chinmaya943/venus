@@ -1,0 +1,35 @@
+{% extends 'staff/index.html' %}
+{% load static %}
+{% block content %}
+<h1>Order Placed</h1>
+<div class="outer-wrapper">
+  <div class="table-wrapper">
+
+  <table class="table table-bordered table-striped"style="width:100%;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">USER</th>
+        <th scope="col">CUSTOMER</th>
+        <th scope="col">PRODUCT</th>
+        <th scope="col">QUANTITY</th>
+        <th scope="col">STATUS</th>
+      </tr>
+    </thead>
+      {% for s in orderplace_list %}
+     <tbody>
+      <tr>
+        <td scope="row">{{s.id}}</td>
+        <td>{{ s.user }}</td>
+        <td>{{ s.customer }}</td>
+        <td>{{ s.product }}</td>
+        <td>{{ s.quantity }}</td>
+        <td>{{ s.status }}</td>
+      </tr>
+        
+      {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

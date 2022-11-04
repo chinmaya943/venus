@@ -1,0 +1,43 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+<h1>Coupons</h1>
+<div class="btn" style="background-color: blue;">
+  <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'co-insert' %}">+ Add Coupon</a>
+</div>
+<div class="outer-wrapper">
+  <div class="table-wrapper">
+    <table class="table table-bordered table-striped" style="width:100%;">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">CODE</th>
+          <th scope="col">VALID FROM</th>
+          <th scope="col">VALID TO</th>
+          <th scope="col">DISCOUNT</th>
+          <th scope="col">ACTIVE</th>
+        </tr>
+      </thead>
+      {% for c in coupon_list %}
+      <tbody>
+        <tr>
+          <td scope="row">{{ c.id }}</td>
+          <td scope="row">{{ c.code }}</td>
+          <td scope="row">{{ c.valid_from }}</td>
+          <td scope="row">{{ c.valid_to }}</td>
+          <td scope="row">{{ c.discount }}</td>
+          <td scope="row">{{ c.active}}</td>
+          <td>
+            <a href="{% url 'coupon-update' c.id %}" class="btn btn-warning btn-sm">Edit</a>
+            <form action="{% url 'coupon-delete' c.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+            </form>
+          </td>
+        </tr>  
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

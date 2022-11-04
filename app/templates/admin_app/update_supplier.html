@@ -1,0 +1,13 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <h2 class="alert alert-info">Update Supplier Details</h2>
+        <form action="" class="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update" class="btn btn-success">
+            <a href="{% url 'list-supplier' %}" class="btn btn-info">Back to Supplier List</a>
+        </form>
+    </div>
+{% endblock %}

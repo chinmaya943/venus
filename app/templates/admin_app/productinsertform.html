@@ -1,0 +1,25 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}    
+    <div class="page-wrapper">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tab">
+            <div class="btn" style="background-color: blue;">
+              <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'Product-insert' %}">+ Add Product</a>
+            </div>
+            <center><u><h1>PRODUCT INSERTION FORM</h1></u></center>
+            {% if submitted %}
+              Your Product was Entered Successfully!!!
+            {% else %}
+              <form method="POST" style="align-items: center;" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.as_p}}
+                  <input type="submit" value="Submit" class="btn btn-success">
+                {% endif %}
+              </form>         
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

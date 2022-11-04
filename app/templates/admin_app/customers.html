@@ -1,0 +1,44 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %} 
+              <h1>Customers</h1>
+              <div class="btn" style="background-color: blue;">
+                <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'Cu-insert' %}">+ Add Customer</a>
+              </div>     
+              <table class="table table-bordered table-striped" style="width:100%;">
+                  <thead>
+                  <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">USER</th>
+                      <th scope="col">NAME</th>
+                      <th scope="col">LOCATION</th>
+                      <th scope="col">CITY</th>
+                      <th scope="col">ZIPCODE</th>
+                      <th scope="col">STATE</th>
+                    </tr>
+                  </thead>
+                    {% for cu in customer_list %}
+                   <tbody>
+                    <tr>
+                      <td scope="row">{{cu.id}}</td>
+                      <td>{{ cu.user }}</td>
+                      <td>{{ cu.name }}</td>
+                      <td>{{ cu.location }}</td>
+                      <td>{{ cu.city }}</td>
+                      <td>{{ cu.zipcode }}</td>
+                      <td>{{ cu.state }}</td>
+                      <td>
+                        <a href="{% url 'customer-update' cu.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{% url 'customer-delete' cu.id %}" method="post" class="d-inline">
+                          {% csrf_token %}
+                          <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                        </form>
+                      </td>
+                    </tr>
+                    
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+      </div>
+{% endblock %}

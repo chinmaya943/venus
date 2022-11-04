@@ -1,0 +1,13 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <h2 class="alert alert-info">Update Order_Placed Details</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Update" class="btn btn-success">
+            <a href="{% url 'list-order_placed' %}" class="btn btn-info"></a>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+<h1>Taxes</h1>
+<div class="btn" style="background-color: blue">
+    <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'tax-insert' %}">+Add Tax</a>
+</div>
+<div class="outer-wrapper">
+    <div class="table-wrapper">
+        <table class="table table-bordered table-striped" style="width:100%;">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Tax Type</th>
+                    <th scope="col">Value(%)</th>
+                </tr>
+            </thead>
+            {% for t in tax_list %}
+            <tbody>
+                <tr>
+                    <td scope="row">{{ t.id }}</td>
+                    <td scope="row">{{ t.tax_type }}</td>
+                    <td scope="row">{{ t.value }} %</td>
+                    <td>
+                        <a href="{% url 'update-tax' t.id %}" class="btn btn-warning">Update</a>
+                        <form action="{% url 'tax-delete' t.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

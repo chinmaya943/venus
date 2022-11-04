@@ -1,0 +1,45 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}  
+      <h1>Order Placed</h1>
+          <div class="btn" style="background-color: blue;">
+            <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'P-insert' %}">+ Add Product</a>
+          </div>
+            <div class="outer-wrapper">
+              <div class="table-wrapper">
+            
+              <table class="table table-bordered table-striped" style="width:100%;">
+                <thead class="thead-dark">
+                  <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">USER</th>
+                      <th scope="col">CUSTOMER</th>
+                      <th scope="col">PRODUCT</th>
+                      <th scope="col">QUANTITY</th>
+                      <th scope="col">STATUS</th>
+                    </tr>
+                  </thead>
+                    {% for s in orderplaced_list %}
+                   <tbody>
+                    <tr>
+                      <td scope="row">{{s.id}}</td>
+                      <td>{{ s.user }}</td>
+                      <td>{{ s.customer }}</td>
+                      <td>{{ s.product }}</td>
+                      <td>{{ s.quantity }}</td>
+                      <td>{{ s.status }}</td>
+                      <td>
+                        <a href="{% url 'op-update' s.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{% url 'op-delete' s.id %}" method="post" class="d-inline">
+                          {% csrf_token %}
+                          <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                        </form>
+                      </td>
+                    </tr>
+                    
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+      </div>
+{% endblock %}       

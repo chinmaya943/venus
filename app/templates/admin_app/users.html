@@ -1,0 +1,42 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+  <h1>Users</h1>
+    <div class="btn" style="background-color: blue;">
+      <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'U-insert' %}">+ Add User</a>
+    </div>
+      <div class="outer-wrapper">
+      <div class="table-wrapper">
+        <table class="table table-bordered table-striped" style="width:100%;">
+          <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">FIRST NAME</th>
+                      <th scope="col">LAST NAME</th>
+                      <th scope="col">EMAIL</th>   
+                      <th scope="col">USER Name</th>
+                      <th scope="col">STAFF CATEGORY</th>
+                    </tr>
+                    </thead>
+                    {% for u in users_list %}
+                      <tbody>
+                        <tr>
+                          <td scope="row">{{ u.id }}</td>
+                          <td>{{ u.first_name }}</td>
+                          <td>{{ u.last_name }}</td>
+                          <td>{{ u.email }}</td>
+                          <td>{{ u.username }}</td>
+                          <td>{{ u.is_staff }}</td>
+                          <td>
+                            <form action="{% url 'u-delete' u.id %}" method="post" class="d-inline">
+                              {% csrf_token %}
+                              <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                            </form>
+                          </td>
+                        </tr>  
+                    {% endfor %}
+                    </tbody>
+        </table>
+      </div>
+    </div>
+{% endblock %}

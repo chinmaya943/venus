@@ -1,0 +1,32 @@
+{% extends 'staff/index.html' %}
+{% load static %}
+{% block content %}
+<h1>Carts</h1>
+<div class="outer-wrapper">
+  <div class="table-wrapper">
+
+  <table class="table table-bordered table-striped" style="width:100%;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">USER</th>
+        <th scope="col">PRODUCT</th>
+        <th scope="col">QUANTITY</th>
+      </tr>
+    </thead>
+      {% for cart in carts_list %}
+     <tbody>
+      <tr>
+        <td scope="row">{{ cart.id }}</td>
+        <td scope="row">{{ cart.user }}</td>
+        <td scope="row">{{ cart.product }}</td>
+        <td scope="row">{{ cart.quantity }}</td>
+      </tr>
+      
+        
+      {% endfor %}
+  </tbody>
+  </table>
+</div>
+</div>
+{% endblock %}

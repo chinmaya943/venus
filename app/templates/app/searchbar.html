@@ -1,0 +1,23 @@
+{{ error }}
+
+{% if prod %}
+    <center><h1>Search Result</h1></center>
+        <br>
+    {% for i in prod %}
+        <center><h1><a href="{% url 'product-detail' i.id %}">
+            <img src="{{i.product_image.url}}" alt="" class="img-fluid img-thumbnail"><br>
+            <!-- {{ i.product_image }} <br> -->
+            <!-- {{ i.id }} <br> -->
+            {{ i.title }}  
+            {{ i.discounted_price }}
+            <!-- {{ i.barcode }} <br>
+            {{ i.selling_price }} <br>
+            
+            {{ i.description }} <br>
+            {{ i.brand }} <br>
+            {{ i.category }} <br> -->
+        </a></h1></center>
+    {% endfor %}
+{% else %}
+        <center><h1>Product Not Found</h1></center>
+{% endif %}

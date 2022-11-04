@@ -1,0 +1,65 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="page-wrapper">
+      <!-- ============================================================== -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab">
+              <div class="btn" style="background-color: blue;">
+                <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'Op-insert' %}">+ Add Customer</a>
+              </div>
+              <div class="btn" style="background-color: yellowgreen;">
+                <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'Op-insert' %}">\ Update</a>
+              </div>
+            <div class="btn" style="background-color: red;">
+              <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'Op-insert' %}">- Delete Customer</a>
+            </div>
+            <div class="btn" style="background-color: red;">
+              <a class="btn" style="color: aliceblue; font-weight: 900;" href="{% url 'Op-insert' %}">Refresh</a>
+            </div>
+          <center><u><h1>OrderPlaced INSERTION FORM</h1></u></center>
+          <form method="POST">
+              {% csrf_token %}
+              <lebel for="">Username : </lebel>
+              <input type="text" name="user" required>
+      
+              <lebel for="">Customer Full Name : </lebel>
+              <input type="text" name="customer" required>
+      
+              <lebel for="">Product Name : </lebel>
+              <input type="text" name="product" required>
+
+              <lebel for="">Quantity : </lebel>
+              <input type="text" name="quantity" required>
+
+              <label for="">Order Data :</label>
+              <input type="date" name="order_data" required>
+
+              <label for="">Status :</label>
+              <select>
+                <option value="select">Select</option>
+                <option value="accepted">Accepted</option>
+                <option value="packed">Packed</option>
+                <option value="ontheway">On The Way</option>
+                <option value="delivered">Delivered</option>
+                <option value="cancel">Cancel</option>
+              </select>
+              <br> <br>
+
+              <button type style="background-color: blue; color: aliceblue;">Save</button>
+   
+              {% if messages %}
+              {% for m in messages %}
+      
+              <h2 style="color:green ;"> {{m}}</h2>
+      
+              {% endfor %}
+              {% endif %}
+          </form>
+       
+        </div>
+    </div>
+        </div>
+      </div>
+{% endblock %}

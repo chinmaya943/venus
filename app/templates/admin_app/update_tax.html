@@ -1,0 +1,13 @@
+{% extends 'admin_app/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <h2 class="alter alter-info">Update Tax Details {{id}}</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Update">
+            <a href="{% url 'list-tax' %}" class="btn btn-info">Back to Tax List</a>
+        </form>
+    </div>
+{% endblock %}
