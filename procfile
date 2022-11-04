@@ -1,1 +1,1 @@
-web: gunicorn venus_daily_mart(2)(19.22.).wsgi --log-file 
+web: waitress-serve --port=8000 shoppinglyx.wsgi:application
